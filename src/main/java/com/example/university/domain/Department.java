@@ -1,26 +1,20 @@
 package com.example.university.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.relational.core.mapping.Table;
 
-@Document
+@Table("DEPARTMENT")
 public class Department {
     @Id
     private Integer id;
 
     private String name;
 
-    @DBRef(db = "chair")
-    private Staff chair;
+    private Chair chair;
 
-    public Department(Integer id, String name, Staff chair) {
-        this.id = id;
+    public Department(String name, Chair chair) {
         this.name = name;
         this.chair = chair;
-    }
-
-    private Department() {
     }
 
     public Integer getId() {
@@ -39,11 +33,11 @@ public class Department {
         this.name = name;
     }
 
-    public Staff getChair() {
+    public Chair getChair() {
         return chair;
     }
 
-    public void setChair(Staff chair) {
+    public void setChair(Chair chair) {
         this.chair = chair;
     }
 
