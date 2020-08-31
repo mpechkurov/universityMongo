@@ -1,43 +1,41 @@
 package com.example.university.domain;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Table("DEPARTMENT")
+@Document
 public class Department {
     @Id
     private Integer id;
 
     private String name;
 
-    private Chair chair;
+    private Staff chair;
 
-    public Department(String name, Chair chair) {
+    public Department(Integer id, String name, Staff chair) {
+        this.id = id;
         this.name = name;
         this.chair = chair;
+    }
+
+    protected Department() {
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Chair getChair() {
-        return chair;
-    }
-
-    public void setChair(Chair chair) {
+    public void setChair(Staff chair) {
         this.chair = chair;
     }
 
