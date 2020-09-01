@@ -1,19 +1,26 @@
 package com.example.university.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Document
+@Entity
+@Table(name = "STAFF_MEMBER")
 public class Staff {
     @Id
+    @GeneratedValue
     private Integer id;
-//    @DBRef(db = "member")
+
+    @Embedded
     private Person member;
 
-    public Staff(Integer id, Person member) {
-        this.id = id;
+    public Staff(Person member) {
         this.member = member;
+    }
+
+    protected Staff() {
     }
 
     public Integer getId() {

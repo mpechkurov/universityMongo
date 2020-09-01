@@ -1,9 +1,15 @@
 package com.example.university.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Person {
 
+    @Column
     private String firstName;
 
+    @Column
     private String lastName;
 
     public Person(String firstName, String lastName) {

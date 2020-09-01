@@ -1,11 +1,8 @@
 package com.example.university.repo;
 
-import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.example.university.domain.Staff;
 
-import reactor.core.publisher.Flux;
-
-public interface StaffRepository extends ReactiveCrudRepository<Staff, Integer> {
-    Flux<Staff> findByMemberLastName(String lastName);
+public interface StaffRepository extends PagingAndSortingRepository<Staff, Integer> {
 }
